@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VibrantLocal - Kualitas Premium, Rasa Lokal Nusantara</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f7f9fb",
+                        "secondary": "#b5007d",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed-dim": "#ffafd5",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-fixed-variant": "#8a005e",
+                        "secondary-container": "#fd4bb6",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#535a71",
+                        "primary-container": "#5d5cff",
+                        "on-secondary-container": "#5a003c",
+                        "on-surface-variant": "#464556",
+                        "inverse-surface": "#2d3133",
+                        "on-primary-fixed": "#09006b",
+                        "secondary-fixed": "#ffd8e8",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "on-background": "#191c1e",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary": "#ffffff",
+                        "primary": "#433fe5",
+                        "outline-variant": "#c7c4d8",
+                        "primary-fixed": "#e1dfff",
+                        "inverse-primary": "#c1c1ff",
+                        "on-tertiary-fixed": "#131b2e",
+                        "tertiary-fixed": "#dae2fd",
+                        "tertiary-container": "#6b738a",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container": "#eceef0",
+                        "on-primary-fixed-variant": "#2b20d2",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#3d0027",
+                        "outline": "#767587",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c1c1ff",
+                        "surface-tint": "#4643e9",
+                        "background": "#f7f9fb",
+                        "on-primary-container": "#fdf9ff",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#fcfaff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "section-gap-desktop": "120px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "container-max": "1200px",
+                        "section-gap-mobile": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .soft-shadow {
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+        }
+        .hover-shadow:hover {
+            box-shadow: 0 10px 30px rgba(93, 92, 255, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, theme('colors.primary'), theme('colors.secondary'));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased pt-20">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex justify-between items-center px-gutter max-w-container-max mx-auto h-20">
+<a class="font-headline-md text-headline-md font-bold text-primary" href="#">VibrantLocal</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Products</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Store</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Contact</a>
+</div>
+<button class="bg-primary hover:opacity-80 transition-opacity text-on-primary font-label-md text-label-md px-6 py-3 rounded-full flex items-center gap-2 shadow-lg shadow-primary/20">
+                Shop Now
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative px-gutter max-w-container-max mx-auto py-section-gap-desktop flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1 flex flex-col items-start gap-6">
+<h1 class="font-display-lg text-display-lg text-on-surface">
+                Kualitas Premium, <br/>
+<span class="gradient-text">Rasa Lokal Nusantara</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                Mendukung pengrajin lokal dengan menghadirkan produk UMKM berkualitas tinggi untuk kebutuhan modern Anda.
+            </p>
+<div class="flex gap-4 mt-4">
+<button class="bg-gradient-to-r from-primary to-secondary text-on-primary font-label-md text-label-md px-8 py-4 rounded-full flex items-center gap-2 hover:opacity-90 transition-opacity shadow-lg shadow-primary/20">
+                    Mulai Belanja
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="border border-outline-variant text-on-surface font-label-md text-label-md px-8 py-4 rounded-full hover:bg-surface-variant transition-colors">
+                    Pelajari Lebih Lanjut
+                </button>
+</div>
+</div>
+<div class="flex-1 relative w-full aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+<img alt="Gradient Aesthetic Hero" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDahRkxdgVjBcZ73nORIvSBp_8g8T5L_s2se9k1tge0XOIPhnh0DwwoZCP_SrGn1w31Xt7G4i5XmY0_JuuQAEX7da4t7v_lhbm39d4-s77URrJYBYIbxQUfxMWf9g_TjljVjJhM3aT-3v-CXuqhmOftrKnhYLf3f5KeqDih_WaCYe3dFDQGoXpK-98Q-qvj-tOtgdvO1NmqcGTvcXJIltcWCJ79OHMOaRktO_zdbiJGwhr9N_g1E4cFsleCOOmWy_FyAg"/>
+</div>
+</header>
+<!-- Product Section -->
+<section class="px-gutter max-w-container-max mx-auto py-section-gap-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Produk Unggulan Kami</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Karya terbaik dari tangan-tangan terampil pengrajin lokal.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Product 1 -->
+<div class="glass-panel rounded-2xl overflow-hidden soft-shadow hover-shadow transition-all duration-300 flex flex-col group">
+<div class="relative h-64 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A beautifully crafted modern ceramic mug sitting on a pristine white marble table. Soft morning sunlight filtering through a nearby window casts gentle shadows. The mug features a minimalist design with a matte finish, colored in a subtle earthy tone. The overall aesthetic is clean, sophisticated, and perfect for a high-end coffee shop or modern home interior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu3qyDLW_XyKFH8I0GzB6_JA9BJSZOo73RWfgRnHXhKeGqQbGdUv_pJfungXGAcZI4FkKh-iTMAmPHW1YpfO-85bLj19Ec5KBvntvm_jFGp43CFVYs5z9kUXrhO1z3TBYTX-hPd0UoMBiDWuMHAyoo7dXP9SPBttEkr8GKenxlOsdS6p2TTZDEnsYqdVb3qBK50fSvWp9U64aUJ8yPKnydFH41Ht3qI3uVZMpZWVF_9_CJL6UoLkLX"/>
+<div class="absolute top-4 right-4 bg-surface/80 backdrop-blur-sm px-3 py-1 rounded-full font-label-sm text-label-sm text-primary">Terlaris</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Mug Keramik Modern</h3>
+<span class="font-label-md text-label-md text-primary bg-primary/10 px-2 py-1 rounded-md">Rp 85.000</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Keramik buatan tangan dengan desain minimalis.</p>
+<button class="w-full border border-primary text-primary hover:bg-primary hover:text-on-primary transition-colors font-label-md text-label-md py-3 rounded-full">Tambah ke Keranjang</button>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="glass-panel rounded-2xl overflow-hidden soft-shadow hover-shadow transition-all duration-300 flex flex-col group">
+<div class="relative h-64 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A premium genuine leather wallet displayed on a clean wooden surface. The wallet is a rich, warm brown color with fine stitching details visible. Soft, diffused lighting highlights the texture of the leather, creating a luxurious and professional vibe. The background is slightly blurred to keep the focus entirely on the craftsmanship of the wallet." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyaFVQEL9BG7bRdzp-PweBcZ77-M24SM5uu2fVIduoL1HuFneSufDu3P5CBnXdMcxvoPGhy1C-b13slpSCKxwFOEySTL3V5LoNWwgsRmIsN-fOF-2vmo7HH4KB3Ggq1MwV_TNcC7yVJyNQI1awalROOmfDScAsS0Z3kxaEk8rKAGWr7g61ZvjA8bQQX2I1q8c_7reKiNAA5nRWWRlIx9Rhh3byMd3_EhZFAMOFNz0BUOKu1Dvcd4wH"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Dompet Kulit Asli</h3>
+<span class="font-label-md text-label-md text-primary bg-primary/10 px-2 py-1 rounded-md">Rp 250.000</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Dompet kulit premium dengan ketahanan luar biasa.</p>
+<button class="w-full border border-primary text-primary hover:bg-primary hover:text-on-primary transition-colors font-label-md text-label-md py-3 rounded-full">Tambah ke Keranjang</button>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="glass-panel rounded-2xl overflow-hidden soft-shadow hover-shadow transition-all duration-300 flex flex-col group">
+<div class="relative h-64 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-quality aromatherapy candle in a sleek glass jar, set against a soft, bright background. The candle is lit, emitting a gentle, warm glow that contrasts beautifully with the cool, modern lighting of the room. Minimalist aesthetic with subtle hints of lavender or botanical elements nearby. The mood is calm, relaxing, and spa-like." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEWVSoWa08rGhjAgZmKVdznVv2UTN3Uag5pEJnAdJW52djMe-EEyClCTBbKI7xrApvmtKrYpALYMbnJoPdpM5HJExRNCuRzYmmkpAWHt_FYDz230lHmTQy9s9k_TkQWbQ_1M2-w6wRyZsXlpImIggkrS1m5bpuUJ2PJhnpFtJrMknZuZICmHZGNdePrAZFyCbtwLOj1sSn5OVIqcJHUTm8nBHKBQUq4Dqv1gzvZvLVTSwURQJKrC6v"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Lilin Aromaterapi</h3>
+<span class="font-label-md text-label-md text-primary bg-primary/10 px-2 py-1 rounded-md">Rp 120.000</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Lilin dengan aroma menenangkan untuk relaksasi.</p>
+<button class="w-full border border-primary text-primary hover:bg-primary hover:text-on-primary transition-colors font-label-md text-label-md py-3 rounded-full">Tambah ke Keranjang</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Location & CTA Section -->
+<section class="bg-surface-container-low py-section-gap-desktop">
+<div class="px-gutter max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1 space-y-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Toko Offline Kami</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        Kunjungi toko fisik kami untuk melihat dan merasakan langsung kualitas produk-produk lokal terbaik yang kami tawarkan.
+                    </p>
+</div>
+<div class="space-y-4">
+<div class="flex items-start gap-4">
+<div class="bg-primary/10 p-3 rounded-xl text-primary flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Alamat</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Jl. Sudirman No. 123, Jakarta Selatan</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="bg-primary/10 p-3 rounded-xl text-primary flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Jam Buka</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Senin - Minggu: 09:00 - 21:00</p>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/30">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Pesan Langsung?</h3>
+<button class="bg-[#25D366] hover:bg-[#20bd5a] text-white font-label-md text-label-md px-8 py-4 rounded-full flex items-center gap-2 transition-colors shadow-lg shadow-[#25D366]/20">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+                        Pesan via WhatsApp
+                    </button>
+</div>
+</div>
+<div class="flex-1 w-full h-[500px] rounded-3xl overflow-hidden shadow-2xl relative">
+<img class="w-full h-full object-cover" data-location="Jakarta" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5yWJZrp6bswYuVYSZikVjQ7KepAqgIepqla2M4S6Zrtyswwv0ygeb7kVwVaTTIBZlV8P9E_-75v6pjlWn715N1B_l3LgkTZ7uKuGIIlcaNPU_4jDJ0uOIINgi-d1P3mwY_v4IToSFNqOrSqS748F3QLQfks2PMC1KObDLLbzvtQuL6d39ed57znNSP0UFNKQTDh5i-Exb6I5E2BOQgpQ9QwwhJv7Un7KO-kbrr1mOn1xXksU90RTW"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full bg-surface-container">
+<div class="flex flex-col md:flex-row justify-between items-center py-section-gap-mobile md:py-12 px-gutter max-w-container-max mx-auto gap-8">
+<div class="font-headline-md text-headline-md font-bold text-on-surface">
+                VibrantLocal
+            </div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-sm text-label-sm" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-sm text-label-sm" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-sm text-label-sm" href="#">Shipping Info</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-sm text-label-sm" href="#">Wholesale</a>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant">
+                © 2024 VibrantLocal SME. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>
