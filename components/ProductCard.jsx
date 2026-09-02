@@ -1,6 +1,6 @@
-export default function ProductCard({ title, price, description, imageUrl, isBestSeller, altText }) {
+export default function ProductCard({ title, price, description, imageUrl, isBestSeller, altText, className = "" }) {
   return (
-    <div className="glass-panel rounded-2xl overflow-hidden soft-shadow hover-shadow transition-all duration-300 flex flex-col group">
+    <div className={`glass-panel rounded-2xl overflow-hidden soft-shadow hover-shadow transition-all duration-300 flex flex-col group w-[280px] shrink-0 ${className}`}>
       <div className="relative h-64 bg-surface-container overflow-hidden">
         <img
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -14,9 +14,9 @@ export default function ProductCard({ title, price, description, imageUrl, isBes
         )}
       </div>
       <div className="p-6 flex flex-col flex-grow">
-        <div className="flex justify-between items-start mb-2">
-          <h3 className="font-headline-md text-headline-md text-on-surface">{title}</h3>
-          <span className="font-label-md text-label-md text-primary bg-primary/10 px-2 py-1 rounded-md">
+        <div className="flex justify-between items-start mb-2 gap-3">
+          <h3 className="font-headline-md text-headline-md text-on-surface line-clamp-2">{title}</h3>
+          <span className="font-label-md text-label-md text-primary bg-primary/10 px-2 py-1 rounded-md whitespace-nowrap">
             {price}
           </span>
         </div>
@@ -24,7 +24,7 @@ export default function ProductCard({ title, price, description, imageUrl, isBes
           {description}
         </p>
         <button className="w-full border border-primary text-primary hover:bg-primary hover:text-on-primary transition-colors font-label-md text-label-md py-3 rounded-full cursor-pointer">
-          Tambah ke Keranjang
+          Pesan Sekarang
         </button>
       </div>
     </div>

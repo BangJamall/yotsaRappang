@@ -1,45 +1,182 @@
+"use client";
+
+import { useRef } from "react";
 import ProductCard from "./ProductCard";
 
-const products = [
+const foodProducts = [
   {
     id: 1,
-    title: "Mug Keramik Modern",
-    price: "Rp 85.000",
-    description: "Keramik buatan tangan dengan desain minimalis.",
-    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuBu3qyDLW_XyKFH8I0GzB6_JA9BJSZOo73RWfgRnHXhKeGqQbGdUv_pJfungXGAcZI4FkKh-iTMAmPHW1YpfO-85bLj19Ec5KBvntvm_jFGp43CFVYs5z9kUXrhO1z3TBYTX-hPd0UoMBiDWuMHAyoo7dXP9SPBttEkr8GKenxlOsdS6p2TTZDEnsYqdVb3qBK50fSvWp9U64aUJ8yPKnydFH41Ht3qI3uVZMpZWVF_9_CJL6UoLkLX",
+    title: "Nasi Kuning Komplit",
+    price: "Rp 25.000",
+    description: "Nasi kuning hangat dengan ayam suwir dan sambal khas.",
+    imageUrl: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
     isBestSeller: true,
   },
   {
     id: 2,
-    title: "Dompet Kulit Asli",
-    price: "Rp 250.000",
-    description: "Dompet kulit premium dengan ketahanan luar biasa.",
-    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuDyaFVQEL9BG7bRdzp-PweBcZ77-M24SM5uu2fVIduoL1HuFneSufDu3P5CBnXdMcxvoPGhy1C-b13slpSCKxwFOEySTL3V5LoNWwgsRmIsN-fOF-2vmo7HH4KB3Ggq1MwV_TNcC7yVJyNQI1awalROOmfDScAsS0Z3kxaEk8rKAGWr7g61ZvjA8bQQX2I1q8c_7reKiNAA5nRWWRlIx9Rhh3byMd3_EhZFAMOFNz0BUOKu1Dvcd4wH",
+    title: "Ayam Geprek Spesial",
+    price: "Rp 32.000",
+    description: "Ayam crispy dengan sambal pedas yang menggoda selera.",
+    imageUrl: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=900&q=80",
     isBestSeller: false,
   },
   {
     id: 3,
-    title: "Lilin Aromaterapi",
-    price: "Rp 120.000",
-    description: "Lilin dengan aroma menenangkan untuk relaksasi.",
-    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuBEWVSoWa08rGhjAgZmKVdznVv2UTN3Uag5pEJnAdJW52djMe-EEyClCTBbKI7xrApvmtKrYpALYMbnJoPdpM5HJExRNCuRzYmmkpAWHt_FYDz230lHmTQy9s9k_TkQWbQ_1M2-w6wRyZsXlpImIggkrS1m5bpuUJ2PJhnpFtJrMknZuZICmHZGNdePrAZFyCbtwLOj1sSn5OVIqcJHUTm8nBHKBQUq4Dqv1gzvZvLVTSwURQJKrC6v",
+    title: "Sate Ayam Bumbu Kacang",
+    price: "Rp 28.000",
+    description: "Sate ayam dengan bumbu kacang gurih dan harum.",
+    imageUrl: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=900&q=80",
     isBestSeller: false,
-  }
+  },
+  {
+    id: 4,
+    title: "Mie Goreng Yotsa",
+    price: "Rp 30.000",
+    description: "Mie goreng dengan topping telur, sayur, dan cita rasa lezat.",
+    imageUrl: "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80",
+    isBestSeller: false,
+  },
+  {
+    id: 5,
+    title: "Bakso Spesial",
+    price: "Rp 26.000",
+    description: "Bakso kenyal dengan mie dan kuah rasa istimewa.",
+    imageUrl: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=80",
+    isBestSeller: false,
+  },
+  {
+    id: 6,
+    title: "Rendang Daging",
+    price: "Rp 35.000",
+    description: "Rendang khas dengan daging empuk dan rempah kuat.",
+    imageUrl: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80",
+    isBestSeller: false,
+  },
+];
+
+const drinkProducts = [
+  {
+    id: 1,
+    title: "Es Teh Lemon",
+    price: "Rp 12.000",
+    description: "Minuman segar dengan rasa teh yang menyegarkan.",
+    imageUrl: "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=900&q=80",
+    isBestSeller: true,
+  },
+  {
+    id: 2,
+    title: "Jus Alpukat",
+    price: "Rp 18.000",
+    description: "Jus alpukat lembut dan creamy dengan cita rasa premium.",
+    imageUrl: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80",
+    isBestSeller: false,
+  },
+  {
+    id: 3,
+    title: "Es Cokelat Oreo",
+    price: "Rp 16.000",
+    description: "Minuman dingin yang creamy dan cocok untuk santapan siang.",
+    imageUrl: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
+    isBestSeller: false,
+  },
+  {
+    id: 4,
+    title: "Smoothie Buah",
+    price: "Rp 20.000",
+    description: "Campuran buah segar dengan tekstur lembut dan manis alami.",
+    imageUrl: "https://images.unsplash.com/photo-1577805947697-89e18298d3ed?auto=format&fit=crop&w=900&q=80",
+    isBestSeller: false,
+  },
+  {
+    id: 5,
+    title: "Lemon Mint Soda",
+    price: "Rp 15.000",
+    description: "Minuman dingin yang menyegarkan dengan sentuhan mint.",
+    imageUrl: "https://images.unsplash.com/photo-1622483767028-3f66f2b0c8f3?auto=format&fit=crop&w=900&q=80",
+    isBestSeller: false,
+  },
+  {
+    id: 6,
+    title: "Cappuccino Dingin",
+    price: "Rp 22.000",
+    description: "Kopi cappuccino dingin dengan tekstur lembut dan harum.",
+    imageUrl: "https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=900&q=80",
+    isBestSeller: false,
+  },
+];
+
+const productGroups = [
+  { id: "makanan", label: "Makanan", items: foodProducts },
+  { id: "minuman", label: "Minuman", items: drinkProducts },
 ];
 
 export default function ProductSection() {
+  const foodRef = useRef(null);
+  const drinkRef = useRef(null);
+
+  const scrollProducts = (ref, direction) => {
+    if (!ref.current) return;
+
+    const cardWidth = ref.current.querySelector(".product-card")?.getBoundingClientRect().width || 280;
+    const gap = 24;
+    ref.current.scrollBy({
+      left: direction * (cardWidth + gap),
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="px-gutter max-w-container-max mx-auto py-section-gap-desktop" id="products">
-      <div className="text-center mb-16">
+      <div className="text-center mb-10">
         <h2 className="font-headline-lg text-headline-lg text-on-surface mb-4">Produk Unggulan Kami</h2>
         <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-          Karya terbaik dari tangan-tangan terampil pengrajin lokal.
+          Pilihan favorit kami untuk memenuhi kebutuhan santap Anda.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {products.map(product => (
-          <ProductCard key={product.id} {...product} />
-        ))}
+
+      <div className="space-y-12">
+        {productGroups.map((group) => {
+          const scrollRef = group.id === "makanan" ? foodRef : drinkRef;
+
+          return (
+            <div key={group.id} className="space-y-4">
+              <h3 className="font-headline-md text-headline-md text-on-surface capitalize">
+                {group.label}
+              </h3>
+
+              <div className="relative group">
+                <button
+                  type="button"
+                  onClick={() => scrollProducts(scrollRef, -1)}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/90 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-primary shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary hover:text-white"
+                  aria-label={`Geser ${group.label} ke kiri`}
+                >
+                  ←
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => scrollProducts(scrollRef, 1)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/90 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-primary shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary hover:text-white"
+                  aria-label={`Geser ${group.label} ke kanan`}
+                >
+                  →
+                </button>
+
+                <div className="overflow-hidden px-12">
+                  <div
+                    ref={scrollRef}
+                    className="flex gap-6 overflow-x-auto pb-4 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                  >
+                    {group.items.map((product) => (
+                      <ProductCard key={`${group.id}-${product.id}`} {...product} className="product-card" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

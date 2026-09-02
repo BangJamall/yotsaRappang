@@ -2,23 +2,23 @@
 
 @theme {
   --color-surface-bright: #f7f9fb;
-  --color-secondary: #b5007d;
+  --color-secondary: #7cb342;
   --color-surface: #f7f9fb;
-  --color-secondary-fixed-dim: #ffafd5;
+  --color-secondary-fixed-dim: #d9efb3;
   --color-error: #ba1a1a;
   --color-surface-variant: #e0e3e5;
   --color-inverse-on-surface: #eff1f3;
-  --color-on-secondary-fixed-variant: #8a005e;
-  --color-secondary-container: #fd4bb6;
+  --color-on-secondary-fixed-variant: #3d5b1a;
+  --color-secondary-container: #9ccc65;
   --color-tertiary-fixed-dim: #bec6e0;
   --color-on-tertiary: #ffffff;
   --color-tertiary: #535a71;
-  --color-primary-container: #5d5cff;
-  --color-on-secondary-container: #5a003c;
+  --color-primary-container: #66bb6a;
+  --color-on-secondary-container: #1b2e0d;
   --color-on-surface-variant: #464556;
   --color-inverse-surface: #2d3133;
-  --color-on-primary-fixed: #09006b;
-  --color-secondary-fixed: #ffd8e8;
+  --color-on-primary-fixed: #0b3b17;
+  --color-secondary-fixed: #e8f5d9;
   --color-surface-dim: #d8dadc;
   --color-on-tertiary-fixed-variant: #3f465c;
   --color-on-primary: #ffffff;
@@ -27,24 +27,24 @@
   --color-surface-container-low: #f2f4f6;
   --color-surface-container-high: #e6e8ea;
   --color-on-secondary: #ffffff;
-  --color-primary: #433fe5;
+  --color-primary: #4caf50;
   --color-outline-variant: #c7c4d8;
-  --color-primary-fixed: #e1dfff;
-  --color-inverse-primary: #c1c1ff;
+  --color-primary-fixed: #d8f7db;
+  --color-inverse-primary: #a5d6a7;
   --color-on-tertiary-fixed: #131b2e;
   --color-tertiary-fixed: #dae2fd;
   --color-tertiary-container: #6b738a;
   --color-surface-container-highest: #e0e3e5;
   --color-surface-container: #eceef0;
-  --color-on-primary-fixed-variant: #2b20d2;
+  --color-on-primary-fixed-variant: #1b5e20;
   --color-on-error-container: #93000a;
-  --color-on-secondary-fixed: #3d0027;
+  --color-on-secondary-fixed: #1a2d0c;
   --color-outline: #767587;
   --color-surface-container-lowest: #ffffff;
-  --color-primary-fixed-dim: #c1c1ff;
-  --color-surface-tint: #4643e9;
+  --color-primary-fixed-dim: #b9e7ba;
+  --color-surface-tint: #4caf50;
   --color-background: #f7f9fb;
-  --color-on-primary-container: #fdf9ff;
+  --color-on-primary-container: #f3fff4;
   --color-on-error: #ffffff;
   --color-error-container: #ffdad6;
   --color-on-tertiary-container: #fcfaff;
@@ -107,24 +107,28 @@
 }
 
 @utility glass-panel {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 @utility soft-shadow {
-    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
 }
 
 @utility hover-shadow {
-    &:hover {
-        box-shadow: 0 10px 30px rgba(93, 92, 255, 0.1);
-    }
+  &:hover {
+    box-shadow: 0 10px 30px rgba(93, 92, 255, 0.1);
+  }
 }
 
 @utility gradient-text {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

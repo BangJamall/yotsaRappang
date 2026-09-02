@@ -3,12 +3,11 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-sm">
-      <div className="flex justify-between items-center px-gutter max-w-container-max mx-auto h-20">
+      <div className="flex justify-between items-center px-gutter max-w-container-max mx-auto h-18">
         <Link
-          className="font-headline-md text-headline-md font-bold text-primary"
+          className="font-headline-md text-headline-md font-black text-primary"
           href="/"
-        >
-          YOTSA
+        >YOTSA
         </Link>
         <div className="hidden md:flex items-center gap-8">
           <Link

@@ -7,7 +7,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "VibrantLocal - Kualitas Premium, Rasa Lokal Nusantara",
+  title: "YOTSA",
   description: "Mendukung pengrajin lokal dengan menghadirkan produk UMKM berkualitas tinggi untuk kebutuhan modern Anda.",
 };
 
