@@ -1,7 +1,7 @@
 export default function ProductCard({ title, price, description, imageUrl, isBestSeller, altText, className = "" }) {
   return (
-    <div className={`glass-panel rounded-2xl overflow-hidden soft-shadow hover-shadow transition-all duration-300 flex flex-col group w-[280px] shrink-0 ${className}`}>
-      <div className="relative h-64 bg-surface-container overflow-hidden">
+    <div className={`glass-panel rounded-2xl overflow-hidden soft-shadow hover-shadow transition-all duration-300 flex flex-col group w-[min(280px,calc(100vw-2rem))] shrink-0 ${className}`}>
+      <div className="relative h-52 md:h-64 bg-surface-container overflow-hidden">
         <img
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           alt={altText || title}
@@ -13,7 +13,7 @@ export default function ProductCard({ title, price, description, imageUrl, isBes
           </div>
         )}
       </div>
-      <div className="p-6 flex flex-col flex-grow">
+      <div className="p-4 md:p-6 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2 gap-3">
           <h3 className="font-headline-md text-headline-md text-on-surface line-clamp-2">{title}</h3>
           <span className="font-label-md text-label-md text-primary bg-primary/10 px-2 py-1 rounded-md whitespace-nowrap">

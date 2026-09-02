@@ -8,7 +8,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata = {
   title: "YOTSA",
-  description: "Mendukung pengrajin lokal dengan menghadirkan produk UMKM berkualitas tinggi untuk kebutuhan modern Anda.",
+  description:
+    "Mendukung pengrajin lokal dengan menghadirkan produk UMKM berkualitas tinggi untuk kebutuhan modern Anda.",
 };
 
 export default function RootLayout({ children }) {
@@ -18,9 +19,12 @@ export default function RootLayout({ children }) {
       className={`${plusJakartaSans.variable} h-full antialiased`}
     >
       <head>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body className="bg-background text-on-background font-body-md antialiased pt-20 flex flex-col min-h-screen">
+      <body className="bg-background text-on-background font-body-md antialiased pt-16 md:pt-20 flex flex-col min-h-screen overflow-x-hidden">
         {children}
       </body>
     </html>

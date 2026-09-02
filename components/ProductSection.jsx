@@ -126,9 +126,9 @@ export default function ProductSection() {
   };
 
   return (
-    <section className="px-gutter max-w-container-max mx-auto py-section-gap-desktop" id="products">
-      <div className="text-center mb-10">
-        <h2 className="font-headline-lg text-headline-lg text-on-surface mb-4">Produk Unggulan Kami</h2>
+    <section className="px-4 sm:px-gutter max-w-container-max mx-auto py-16 md:py-section-gap-desktop" id="products">
+      <div className="text-center mb-8 md:mb-10">
+        <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">Produk Unggulan Kami</h2>
         <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
           Pilihan favorit kami untuk memenuhi kebutuhan santap Anda.
         </p>
@@ -148,7 +148,7 @@ export default function ProductSection() {
                 <button
                   type="button"
                   onClick={() => scrollProducts(scrollRef, -1)}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/90 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-primary shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary hover:text-white"
+                  className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/90 backdrop-blur-md border border-white/30 rounded-full items-center justify-center text-primary shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary hover:text-white"
                   aria-label={`Geser ${group.label} ke kiri`}
                 >
                   ←
@@ -157,13 +157,13 @@ export default function ProductSection() {
                 <button
                   type="button"
                   onClick={() => scrollProducts(scrollRef, 1)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/90 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-primary shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary hover:text-white"
+                  className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/90 backdrop-blur-md border border-white/30 rounded-full items-center justify-center text-primary shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary hover:text-white"
                   aria-label={`Geser ${group.label} ke kanan`}
                 >
                   →
                 </button>
 
-                <div className="overflow-hidden px-12">
+                <div className="overflow-hidden md:px-12">
                   <div
                     ref={scrollRef}
                     className="flex gap-6 overflow-x-auto pb-4 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
