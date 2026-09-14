@@ -1,4 +1,6 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -8,8 +10,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata = {
   title: "YOTSA",
-  description:
-    "Mendukung pengrajin lokal dengan menghadirkan produk UMKM berkualitas tinggi untuk kebutuhan modern Anda.",
+  description: "Butuh yang segar dan enak? Yotsa aja Bosku!!",
 };
 
 export default function RootLayout({ children }) {
@@ -25,7 +26,9 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="bg-background text-on-background font-body-md antialiased pt-16 md:pt-20 flex flex-col min-h-screen overflow-x-hidden">
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

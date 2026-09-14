@@ -20,6 +20,11 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-8">
           <Link
             className="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
+            href="/">
+            Home
+          </Link>
+          <Link
+            className="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
             href="#products"
           >
             Products
@@ -32,14 +37,11 @@ export default function Navbar() {
           </Link>
           <Link
             className="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
-            href="#contact"
+            href="/poster"
           >
-            Contact
+            Poster
           </Link>
         </div>
-        <button className="hidden sm:flex bg-primary hover:opacity-80 transition-opacity text-on-primary font-label-md text-label-md px-5 md:px-6 py-2.5 md:py-3 rounded-full items-center gap-2 shadow-lg shadow-primary/20 cursor-pointer">
-          Shop Now
-        </button>
         <button
           type="button"
           className="md:hidden p-2 text-on-surface rounded-lg hover:bg-surface-variant transition-colors"
@@ -53,7 +55,7 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden border-t border-outline-variant/30 bg-surface px-4 py-4 shadow-lg">
           <div className="flex flex-col gap-1">
-            {["Products", "Store", "About", "Contact"].map((label) => (
+            {["Home", "Products", "About", "Poster"].map((label) => (
               <Link
                 key={label}
                 className="px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
@@ -63,9 +65,6 @@ export default function Navbar() {
                 {label}
               </Link>
             ))}
-            <button className="mt-2 bg-primary text-on-primary font-label-md text-label-md px-5 py-3 rounded-full shadow-lg shadow-primary/20">
-              Shop Now
-            </button>
           </div>
         </div>
       )}
