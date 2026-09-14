@@ -26,12 +26,6 @@ export default function Navbar() {
           </Link>
           <Link
             className="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
-            href="#store"
-          >
-            Store
-          </Link>
-          <Link
-            className="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
             href="#about"
           >
             About

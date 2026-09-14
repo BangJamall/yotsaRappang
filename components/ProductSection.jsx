@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ProductCard from "./ProductCard";
+import ProductModal from "./ProductModal";
 
 const foodProducts = [
   {
@@ -113,6 +114,7 @@ const productGroups = [
 export default function ProductSection() {
   const foodRef = useRef(null);
   const drinkRef = useRef(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const scrollProducts = (ref, direction) => {
     if (!ref.current) return;
@@ -169,7 +171,8 @@ export default function ProductSection() {
                     className="flex gap-6 overflow-x-auto pb-4 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                   >
                     {group.items.map((product) => (
-                      <ProductCard key={`${group.id}-${product.id}`} {...product} className="product-card" />
+                      <ProductCard key={`${group.id}-${product.id}`} {...product} className="product-card"
+                      onClick={() => setSelectedProduct(product)} />
                     ))}
                   </div>
                 </div>
@@ -178,6 +181,7 @@ export default function ProductSection() {
           );
         })}
       </div>
+      <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
     </section>
   );
 }
