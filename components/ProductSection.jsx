@@ -128,7 +128,7 @@ export default function ProductSection() {
   };
 
   return (
-    <section className="px-4 sm:px-gutter max-w-container-max mx-auto py-16 md:py-section-gap-desktop" id="products">
+    <section className="px-4 sm:px-gutter max-w-container-max mx-auto py-10 md:py-section-gap-desktop" id="products">
       <div className="text-center mb-8 md:mb-10">
         <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">Produk Unggulan Kami</h2>
         <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">

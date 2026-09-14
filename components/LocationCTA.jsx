@@ -3,7 +3,7 @@ export default function LocationCTA() {
   const googleMapsUrl = "https://www.google.com/maps/place/YOTSA+(Food+%26+Drink)/@-3.8454721,119.8262477,19z/data=!4m10!1m2!2m1!1skedai+yotsa+lanrang!3m6!1s0x2d95cba5ba1808ff:0x17ef6dca41fe65ec!8m2!3d-3.8454721!4d119.82714!15sChNrZWRhaSB5b3RzYSBsYW5yYW5nWhUiE2tlZGFpIHlvdHNhIGxhbnJhbmeSAQRkZWxp4AEA!16s%2Fg%2F11k46g9xfm?entry=ttu&g_ep=EgoyMDI2MDgzMC4wIKXMDSoASAFQAw%3D%3D";
 
   return (
-    <section className="bg-surface-container-low py-16 md:py-section-gap-desktop" id="about">
+    <section className="bg-surface-container-low py-10 md:py-section-gap-desktop" id="about">
       <div className="px-4 sm:px-gutter max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
         <div className="flex-1 space-y-6 md:space-y-8">
           <div>
