@@ -55,11 +55,11 @@
   --radius-full: 9999px;
 
   --spacing-gutter: 24px;
-  --spacing-section-gap-desktop: 120px;
+  --spacing-section-gap-desktop: 72px;
   --spacing-base: 8px;
   --spacing-margin-mobile: 20px;
   --spacing-container-max: 1200px;
-  --spacing-section-gap-mobile: 64px;
+  --spacing-section-gap-mobile: 40px;
 
   --font-headline-lg-mobile: var(--font-plus-jakarta-sans), sans-serif;
   --font-label-sm: var(--font-plus-jakarta-sans), sans-serif;
@@ -107,7 +107,7 @@
 }
 
 @utility glass-panel {
-  background: rgba(255, 255, 255, 0.8);
+  background: #ffffff;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.5);

@@ -136,7 +136,7 @@ export default function ProductSection() {
         </p>
       </div>
 
-      <div className="space-y-12">
+      <div className="space-y-8">
         {productGroups.map((group) => {
           const scrollRef = group.id === "makanan" ? foodRef : drinkRef;
 
@@ -168,11 +168,11 @@ export default function ProductSection() {
                 <div className="overflow-hidden md:px-12">
                   <div
                     ref={scrollRef}
-                    className="flex gap-6 overflow-x-auto pb-4 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                    className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                   >
                     {group.items.map((product) => (
                       <ProductCard key={`${group.id}-${product.id}`} {...product} className="product-card"
-                      onClick={() => setSelectedProduct(product)} />
+                        onClick={() => setSelectedProduct(product)} />
                     ))}
                   </div>
                 </div>

@@ -14,7 +14,7 @@ export default function ProductModal({ product, onClose }) {
 
   if (!product) return null;
 
-    const handleOrderClick = () => {
+  const handleOrderClick = () => {
     const phoneNumber = "6281234567890"; // 👈 samakan dengan nomor di ProductCard
     const message = `Halo, saya ingin memesan *${product.title}* (${product.price}). Apakah masih tersedia?`;
     const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
@@ -27,7 +27,7 @@ export default function ProductModal({ product, onClose }) {
       onClick={onClose} // klik area luar -> tutup modal
     >
       <div
-        className="bg-white rounded-2xl overflow-hidden max-w-md w-full shadow-2xl relative animate-in fade-in zoom-in duration-200"
+        className="bg-white rounded-2xl overflow-y-auto max-h-[90vh] max-w-md w-full shadow-2xl relative animate-in fade-in zoom-in duration-200"
         onClick={(e) => e.stopPropagation()} // cegah klik di dalam modal ikut menutup
       >
         <button
@@ -42,10 +42,10 @@ export default function ProductModal({ product, onClose }) {
         <img
           src={product.imageUrl}
           alt={product.title}
-          className="w-full h-56 object-cover"
+          className="w-full h-44 sm:h-56 object-cover"
         />
 
-        <div className="p-6 space-y-3">
+        <div className="p-4 sm:p-6 space-y-3">
           {product.isBestSeller && (
             <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full bg-primary/10 text-primary">
               Best Seller

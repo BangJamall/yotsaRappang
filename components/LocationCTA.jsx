@@ -4,8 +4,8 @@ export default function LocationCTA() {
 
   return (
     <section className="bg-surface-container-low py-10 md:py-section-gap-desktop" id="about">
-      <div className="px-4 sm:px-gutter max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
-        <div className="flex-1 space-y-6 md:space-y-8">
+      <div className="px-4 sm:px-gutter max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <div className="flex-1 space-y-4 md:space-y-6">
           <div>
             <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">Toko Offline Kami</h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant">

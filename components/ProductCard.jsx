@@ -11,7 +11,7 @@ export default function ProductCard({ title, price, description, imageUrl, isBes
 
   return (
     <div
-      className={`glass-panel rounded-2xl overflow-hidden soft-shadow hover-shadow transition-all duration-300 flex flex-col group w-[min(280px,calc(100vw-2rem))] shrink-0 cursor-pointer ${className}`}
+      className={`glass-panel rounded-2xl overflow-hidden soft-shadow hover-shadow transition-all duration-300 flex flex-col group w-[min(280px,calc(100vw-2rem))] shrink-0 snap-start cursor-pointer ${className}`}
       onClick={onClick}
       role="button"
       tabIndex={0}
