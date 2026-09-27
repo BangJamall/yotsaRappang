@@ -15,7 +15,7 @@ export default function ProductModal({ product, onClose }) {
   if (!product) return null;
 
   const handleOrderClick = () => {
-    const phoneNumber = "6281234567890"; // 👈 samakan dengan nomor di ProductCard
+    const phoneNumber = "6281234567890"; // 
     const message = `Halo, saya ingin memesan *${product.title}* (${product.price}). Apakah masih tersedia?`;
     const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(waUrl, "_blank");
@@ -39,25 +39,32 @@ export default function ProductModal({ product, onClose }) {
           ✕
         </button>
 
-        <img
-          src={product.imageUrl}
-          alt={product.title}
-          className="w-full h-44 sm:h-56 object-cover"
-        />
+        <div className="bg-surface rounded-2xl overflow-hidden shadow-md flex flex-col isolate">
+
+          <div className="relative w-full aspect-square sm:aspect-[4/3] bg-gray-50">
+            <img
+              src={product.imageUrl}
+              alt={product.title}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+
+            {/* Badge Best Seller */}
+            {product.isBestSeller && (
+              <span className="absolute top-3 left-3 z-10 inline-flex items-center text-xs font-bold px-3 py-1 rounded-full bg-white text-primary shadow-sm">
+                Best Seller
+              </span>
+            )}
+          </div>
+        </div>
 
         <div className="p-4 sm:p-6 space-y-3">
-          {product.isBestSeller && (
-            <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full bg-primary/10 text-primary">
-              Best Seller
-            </span>
-          )}
           <h3 className="font-headline-md text-headline-md text-on-surface">
             {product.title}
           </h3>
           <p className="font-body-lg text-body-lg text-on-surface-variant">
             {product.description}
           </p>
-          <p className="font-headline-sm text-primary">{product.price}</p>
+          <p className="font-headline-sm font-bold text-primary">{product.price}</p>
 
           <button
             type="button"

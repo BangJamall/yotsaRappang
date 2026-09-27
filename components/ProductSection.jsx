@@ -128,7 +128,7 @@ export default function ProductSection() {
   };
 
   return (
-    <section className="px-4 sm:px-gutter max-w-container-max mx-auto py-10 md:py-section-gap-desktop" id="products">
+    <section className="min-w-0 max-w-full px-4 sm:px-gutter max-w-container-max mx-auto py-10 md:py-section-gap-desktop" id="products">
       <div className="text-center mb-8 md:mb-10">
         <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">Produk Unggulan Kami</h2>
         <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
@@ -146,7 +146,7 @@ export default function ProductSection() {
                 {group.label}
               </h3>
 
-              <div className="relative group">
+              <div className="relative group min-w-0 max-w-full">
                 <button
                   type="button"
                   onClick={() => scrollProducts(scrollRef, -1)}
@@ -165,10 +165,10 @@ export default function ProductSection() {
                   →
                 </button>
 
-                <div className="overflow-hidden md:px-12">
+                <div className="min-w-0 max-w-full overflow-hidden md:px-12">
                   <div
                     ref={scrollRef}
-                    className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                    className="flex min-w-0 max-w-full touch-pan-x gap-4 overscroll-x-contain overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory sm:gap-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                   >
                     {group.items.map((product) => (
                       <ProductCard key={`${group.id}-${product.id}`} {...product} className="product-card"

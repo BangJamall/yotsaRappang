@@ -26,8 +26,8 @@ export default function ProductCard({ title, price, description, imageUrl, isBes
           src={imageUrl}
         />
         {isBestSeller && (
-          <div className="absolute top-4 right-4 bg-surface/80 backdrop-blur-sm px-3 py-1 rounded-full font-label-sm text-label-sm text-primary">
-            Terlaris
+          <div className="absolute top-4 left-4 bg-surface/80 backdrop-blur-sm px-3 py-1 rounded-full font-label-sm text-label-sm text-primary">
+            Best Seller
           </div>
         )}
       </div>
