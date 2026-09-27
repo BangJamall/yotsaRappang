@@ -17,13 +17,14 @@ export default function Hero() {
           <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
             Solusi camilan enak dan hemat setiap hari. Dibuat dengan sepenuh hati oleh pedagang lokal untuk menemani waktu kumpul bersama.
           </p>
-            <button className="w-full justify-center bg-gradient-to-r from-primary to-secondary text-on-primary font-label-md text-label-md px-6 sm:px-8 py-3.5 sm:py-4 rounded-full flex items-center gap-2 hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 cursor-pointer"
-            href="/#products">
+            <a href="/#products" className="w-full">
+            <button className="w-full justify-center bg-gradient-to-r from-primary to-secondary text-on-primary font-label-md text-label-md px-6 sm:px-8 py-3.5 sm:py-4 rounded-full flex items-center gap-2 hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 cursor-pointer">
               Mulai Belanja
               <span className="material-symbols-outlined" data-icon="arrow_forward">
                 arrow_forward
               </span>
             </button>
+            </a>
         </div>
 
         <div className="relative z-10 flex-1 min-w-0 w-full aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-surface">
