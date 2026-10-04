@@ -25,8 +25,15 @@ const emptyProduct = {
 
 const posterCategories = ["makanan", "minuman", "splash"];
 
-function Icon({ name }) {
-    return <span aria-hidden="true" className="material-symbols-outlined text-[20px]">{name}</span>;
+function Icon({ name, className = "" }) {
+    return (
+        <span
+            aria-hidden="true"
+            className={`material-symbols-outlined text-[20px] ${className}`}
+        >
+            {name}
+        </span>
+    );
 }
 
 function formatPrice(price) {
@@ -248,6 +255,10 @@ export default function AdminDashboard() {
 
     const activeProducts = products.filter((product) => Boolean(Number(product.is_active))).length;
 
+    const foodDrinkPosters = posters.filter((poster) => poster.category ==="makanan" || poster.category === "minuman");
+
+    const splashPosters = posters.filter((poster) => poster.category === "splash");
+
     return (
         <main className="mx-auto w-full max-w-container-max flex-1 px-4 py-8 sm:px-6 md:py-12">
             <header className="mb-8 flex flex-col gap-4 border-b border-outline-variant/40 pb-6 sm:flex-row sm:items-end sm:justify-between">
@@ -256,20 +267,29 @@ export default function AdminDashboard() {
                     <h1 className="text-3xl font-bold text-on-surface">Dashboard</h1>
                     <p className="mt-2 text-sm text-on-surface-variant">Kelola menu dan materi promosi Yotsa.</p>
                 </div>
-                <button onClick={handleLogout} className="inline-flex items-center gap-2 self-start rounded-lg border border-outline-variant px-4 py-2 text-sm font-semibold text-on-surface-variant transition hover:bg-surface-container sm:self-auto">
+                <button onClick={handleLogout} className="inline-flex items-center gap-2 self-start rounded-lg border border-outline-variant px-4 py-2 text-sm font-semibold text-on-surface-variant transition hover:bg-red-100 hover:text-red-700 hover:border-red-700 sm:self-auto">
                     <Icon name="logout" /> Keluar
                 </button>
             </header>
 
-            <div className="mb-7 grid grid-cols-2 gap-3 sm:gap-5">
-                <div className="rounded-lg border border-outline-variant/40 bg-white p-4 sm:p-5">
+            <div className="mb-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+                <div className="rounded-lg border border-blue-100 bg-blue-50 p-4 sm:p-5">
                     <p className="text-sm text-on-surface-variant">Total produk</p>
-                    <p className="mt-1 text-2xl font-bold text-on-surface">{products.length}</p>
+                    <p className="mt-1 text-2xl font-bold text-blue-700">{products.length}</p>
                 </div>
-                <div className="rounded-lg border border-outline-variant/40 bg-white p-4 sm:p-5">
+                <div className="rounded-lg border border-green-100 bg-green-50 p-4 sm:p-5">
                     <p className="text-sm text-on-surface-variant">Produk aktif</p>
-                    <p className="mt-1 text-2xl font-bold text-on-surface">{activeProducts}</p>
+                    <p className="mt-1 text-2xl font-bold text-green-700">{activeProducts}</p>
                 </div>
+                <div className="rounded-lg border border-amber-100 bg-amber-50 p-4 sm:p-5">
+                    <p className="text-sm text-on-surface-variant">Poster Makanan & Minuman</p>
+                    <p className="mt-1 text-2xl font-bold text-amber-700">{foodDrinkPosters.length}</p>
+                </div>
+                <div className="rounded-lg border border-purple-100 bg-purple-50 p-4 sm:p-5">
+                    <p className="text-sm text-on-surface-variant">Poster Splash</p>
+                    <p className="mt-1 text-2xl font-bold text-purple-700">{splashPosters.length}</p>
+                </div>
+
             </div>
 
             <div className="mb-5 flex items-center justify-between gap-3 border-b border-outline-variant/40">
@@ -281,8 +301,9 @@ export default function AdminDashboard() {
                         <Icon name="image" /> Poster
                     </button>
                 </div>
-                <button onClick={() => activeTab === "products" ? openProductForm() : openPosterForm()} className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white shadow-sm transition hover:bg-primary/90" aria-label={activeTab === "products" ? "Tambah produk" : "Tambah poster"} title={activeTab === "products" ? "Tambah produk" : "Tambah poster"}>
-                    <Icon name="add" />
+                <button onClick={() => activeTab === "products" ? openProductForm() : openPosterForm()} className=" group inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white shadow-sm transition hover:bg-primary/90" aria-label={activeTab === "products" ? "Tambah produk" : "Tambah poster"} title={activeTab === "products" ? "Tambah produk" : "Tambah poster"}>
+                    <Icon name="add"
+                    className ="transition-transform duration-300 group-hover:rotate-90" />
                 </button>
             </div>
 
