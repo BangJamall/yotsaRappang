@@ -9,6 +9,8 @@ const fallbackPosters = [
   { id: 2, src: "/2.webp", alt: "Poster Minuman" },
 ];
 
+const slideDuration = 3000; // Durasi per slide dalam milidetik
+
 export default function SplashScreen({ onFinish }) {
   const [posters, setPosters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -55,7 +57,7 @@ export default function SplashScreen({ onFinish }) {
 
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % posters.length);
-    }, 3000);
+    }, slideDuration);
     return () => clearInterval(interval);
   }, [posters.length]);
 
@@ -66,9 +68,11 @@ export default function SplashScreen({ onFinish }) {
       return;
     }
 
+    const totalDisplaTime = posters.length === 1 ? 3000 : posters.length * slideDuration;
+
     const timeout = setTimeout(() => {
       handleClose();
-    }, 6000);
+    }, totalDisplaTime);
     return () => clearTimeout(timeout);
   }, [handleClose, isLoading, onFinish, posters.length]);
 
@@ -89,6 +93,14 @@ export default function SplashScreen({ onFinish }) {
     }
     touchStartX.current = null;
   };
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % posters.length);
+  }
+
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev - 1 + posters.length) % posters.length);
+  }
 
   if (!isVisible || isLoading || posters.length === 0) return null;
 
@@ -114,6 +126,31 @@ export default function SplashScreen({ onFinish }) {
         >
           ✕
         </button>
+
+        {/* Tombol Navigasi Kiri & Kanan (Hanya tampil jika poster > 1) */}
+        {posters.length > 1 && (
+          <>
+            {/* Tombol Previous (Kiri) */}
+            <button
+              type="button"
+              onClick={handlePrev}
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm hover:bg-black/70 transition-all active:scale-95"
+              aria-label="Poster Sebelumnya"
+            >
+              ❮
+            </button>
+
+            {/* Tombol Next (Kanan) */}
+            <button
+              type="button"
+              onClick={handleNext}
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm hover:bg-black/70 transition-all active:scale-95"
+              aria-label="Poster Selanjutnya"
+            >
+              ❯
+            </button>
+          </>
+        )}
 
         <div
           className="flex h-full transition-transform duration-500 ease-in-out"
