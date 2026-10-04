@@ -2,13 +2,16 @@
 
 import { useCallback, useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import { getImageUrl, getPosters } from "@/lib/api";
 
-const posters = [
+const fallbackPosters = [
   { id: 1, src: "/1.webp", alt: "Poster Makanan" },
   { id: 2, src: "/2.webp", alt: "Poster Minuman" },
 ];
 
 export default function SplashScreen({ onFinish }) {
+  const [posters, setPosters] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const touchStartX = useRef(null);
@@ -20,23 +23,55 @@ export default function SplashScreen({ onFinish }) {
     }, 300);
   }, [onFinish]);
 
-  // Auto-geser tiap 2 detik
   useEffect(() => {
+    let isCurrent = true;
+
+    getPosters()
+      .then((result) => {
+        const splashPosters = (result.data || [])
+          .filter((poster) => poster.category === "splash" && Boolean(Number(poster.is_active)))
+          .map((poster) => ({
+            id: poster.id,
+            src: getImageUrl(poster.image_url),
+            alt: poster.title || "Poster splash Yotsa",
+          }));
+
+        if (isCurrent) setPosters(splashPosters);
+      })
+      .catch(() => {
+        if (isCurrent) setPosters(fallbackPosters);
+      })
+      .finally(() => {
+        if (isCurrent) setIsLoading(false);
+      });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (posters.length < 2) return;
+
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % posters.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [posters.length]);
 
-  // Splash otomatis hilang setelah 4 detik
   useEffect(() => {
+    if (isLoading) return;
+    if (posters.length === 0) {
+      onFinish?.();
+      return;
+    }
+
     const timeout = setTimeout(() => {
       handleClose();
     }, 6000);
     return () => clearTimeout(timeout);
-  }, [handleClose]);
+  }, [handleClose, isLoading, onFinish, posters.length]);
 
-  // Swipe manual (opsional, ringan)
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -55,7 +90,7 @@ export default function SplashScreen({ onFinish }) {
     touchStartX.current = null;
   };
 
-  if (!isVisible) return null;
+  if (!isVisible || isLoading || posters.length === 0) return null;
 
   return (
     // Overlay: gelap + blur, menutupi seluruh layar
@@ -93,6 +128,7 @@ export default function SplashScreen({ onFinish }) {
                 className="object-cover"
                 sizes="(max-width: 448px) 100vw, 448px"
                 quality={80}
+                unoptimized
                 priority
               />
             </div>
@@ -104,9 +140,8 @@ export default function SplashScreen({ onFinish }) {
           {posters.map((poster, index) => (
             <span
               key={poster.id}
-              className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                index === activeIndex ? "bg-white" : "bg-white/40"
-              }`}
+              className={`w-2 h-2 rounded-full transition-colors duration-300 ${index === activeIndex ? "bg-white" : "bg-white/40"
+                }`}
             />
           ))}
         </div>

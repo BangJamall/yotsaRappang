@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModal";
+import { getImageUrl, getProducts } from "@/lib/api";
 
 const foodProducts = [
   {
@@ -106,15 +107,58 @@ const drinkProducts = [
   },
 ];
 
-const productGroups = [
-  { id: "makanan", label: "Makanan", items: foodProducts },
-  { id: "minuman", label: "Minuman", items: drinkProducts },
-];
-
 export default function ProductSection() {
   const foodRef = useRef(null);
   const drinkRef = useRef(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [productsByCategory, setProductsByCategory] = useState({
+    makanan: foodProducts,
+    minuman: drinkProducts,
+  });
+
+  useEffect(() => {
+    let isCurrent = true;
+
+    getProducts({ activeOnly: true })
+      .then((result) => {
+        if (!isCurrent || !result.data) return;
+
+        const products = { makanan: [], minuman: [] };
+        result.data.forEach((product) => {
+          const category = String(product.category || "").toLowerCase();
+          if (!products[category]) return;
+
+          const price = Number(product.price);
+          products[category].push({
+            id: product.id,
+            title: product.title,
+            category,
+            price: Number.isFinite(price)
+              ? new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR",
+                maximumFractionDigits: 0,
+              }).format(price)
+              : product.price,
+            description: product.description || "",
+            imageUrl: getImageUrl(product.image_url || product.imageUrl),
+            isBestSeller: Boolean(Number(product.is_best_seller ?? product.isBestSeller)),
+          });
+        });
+
+        setProductsByCategory(products);
+      })
+      .catch(() => { });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, []);
+
+  const productGroups = [
+    { id: "makanan", label: "Makanan", items: productsByCategory.makanan },
+    { id: "minuman", label: "Minuman", items: productsByCategory.minuman },
+  ];
 
   const scrollProducts = (ref, direction) => {
     if (!ref.current) return;
