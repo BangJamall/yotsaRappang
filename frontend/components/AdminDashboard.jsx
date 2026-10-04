@@ -68,6 +68,7 @@ export default function AdminDashboard() {
     });
     const [editingPosterId, setEditingPosterId] = useState(null);
     const [posterImage, setPosterImage] = useState(null);
+    const [showPassword, setShowPassword] = useState(false);
 
     async function refreshData() {
         setLoadingData(true);
@@ -242,7 +243,24 @@ export default function AdminDashboard() {
                     </label>
                     <label className="mb-5 block text-sm font-semibold text-on-surface">
                         Password
-                        <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="current-password" required className="mt-2 w-full rounded-lg border border-outline-variant px-3 py-2.5 font-normal outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
+                        <div className="relative mt-2">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                value={password}
+                                onChange={(event) => setPassword(event.target.value)}
+                                autoComplete="current-password"
+                                required
+                                className="w-full rounded-lg border border-outline-variant px-3 py-2.5 pr-10 font-normal outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                            />
+
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
+                            >
+                                <Icon name={showPassword ? "visibility_off" : "visibility"} />
+                            </button>
+                        </div>
                     </label>
                     {error && <p role="alert" className="mb-4 rounded-lg bg-error/10 px-3 py-2 text-sm text-error">{error}</p>}
                     <button disabled={submitting} className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 font-semibold text-white transition hover:bg-primary/90 disabled:cursor-wait disabled:opacity-60">
@@ -255,7 +273,7 @@ export default function AdminDashboard() {
 
     const activeProducts = products.filter((product) => Boolean(Number(product.is_active))).length;
 
-    const foodDrinkPosters = posters.filter((poster) => poster.category ==="makanan" || poster.category === "minuman");
+    const foodDrinkPosters = posters.filter((poster) => poster.category === "makanan" || poster.category === "minuman");
 
     const splashPosters = posters.filter((poster) => poster.category === "splash");
 
@@ -303,7 +321,7 @@ export default function AdminDashboard() {
                 </div>
                 <button onClick={() => activeTab === "products" ? openProductForm() : openPosterForm()} className=" group inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white shadow-sm transition hover:bg-primary/90" aria-label={activeTab === "products" ? "Tambah produk" : "Tambah poster"} title={activeTab === "products" ? "Tambah produk" : "Tambah poster"}>
                     <Icon name="add"
-                    className ="transition-transform duration-300 group-hover:rotate-90" />
+                        className="transition-transform duration-300 group-hover:rotate-90" />
                 </button>
             </div>
 
