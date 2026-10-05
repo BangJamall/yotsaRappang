@@ -5,126 +5,26 @@ import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModal";
 import { getImageUrl, getProducts } from "@/lib/api";
 
-const foodProducts = [
-  {
-    id: 1,
-    title: "Nasi Kuning Komplit",
-    price: "Rp 25.000",
-    description: "Nasi kuning hangat dengan ayam suwir dan sambal khas.",
-    imageUrl: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
-    isBestSeller: true,
-  },
-  {
-    id: 2,
-    title: "Ayam Geprek Spesial",
-    price: "Rp 32.000",
-    description: "Ayam crispy dengan sambal pedas yang menggoda selera.",
-    imageUrl: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=900&q=80",
-    isBestSeller: false,
-  },
-  {
-    id: 3,
-    title: "Sate Ayam Bumbu Kacang",
-    price: "Rp 28.000",
-    description: "Sate ayam dengan bumbu kacang gurih dan harum.",
-    imageUrl: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=900&q=80",
-    isBestSeller: false,
-  },
-  {
-    id: 4,
-    title: "Mie Goreng Yotsa",
-    price: "Rp 30.000",
-    description: "Mie goreng dengan topping telur, sayur, dan cita rasa lezat.",
-    imageUrl: "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80",
-    isBestSeller: false,
-  },
-  {
-    id: 5,
-    title: "Bakso Spesial",
-    price: "Rp 26.000",
-    description: "Bakso kenyal dengan mie dan kuah rasa istimewa.",
-    imageUrl: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=80",
-    isBestSeller: false,
-  },
-  {
-    id: 6,
-    title: "Rendang Daging",
-    price: "Rp 35.000",
-    description: "Rendang khas dengan daging empuk dan rempah kuat.",
-    imageUrl: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80",
-    isBestSeller: false,
-  },
-];
-
-const drinkProducts = [
-  {
-    id: 1,
-    title: "Es Teh Lemon",
-    price: "Rp 12.000",
-    description: "Minuman segar dengan rasa teh yang menyegarkan.",
-    imageUrl: "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=900&q=80",
-    isBestSeller: true,
-  },
-  {
-    id: 2,
-    title: "Jus Alpukat",
-    price: "Rp 18.000",
-    description: "Jus alpukat lembut dan creamy dengan cita rasa premium.",
-    imageUrl: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80",
-    isBestSeller: false,
-  },
-  {
-    id: 3,
-    title: "Es Cokelat Oreo",
-    price: "Rp 16.000",
-    description: "Minuman dingin yang creamy dan cocok untuk santapan siang.",
-    imageUrl: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
-    isBestSeller: false,
-  },
-  {
-    id: 4,
-    title: "Smoothie Buah",
-    price: "Rp 20.000",
-    description: "Campuran buah segar dengan tekstur lembut dan manis alami.",
-    imageUrl: "https://images.unsplash.com/photo-1577805947697-89e18298d3ed?auto=format&fit=crop&w=900&q=80",
-    isBestSeller: false,
-  },
-  {
-    id: 5,
-    title: "Lemon Mint Soda",
-    price: "Rp 15.000",
-    description: "Minuman dingin yang menyegarkan dengan sentuhan mint.",
-    imageUrl: "https://images.unsplash.com/photo-1622483767028-3f66f2b0c8f3?auto=format&fit=crop&w=900&q=80",
-    isBestSeller: false,
-  },
-  {
-    id: 6,
-    title: "Cappuccino Dingin",
-    price: "Rp 22.000",
-    description: "Kopi cappuccino dingin dengan tekstur lembut dan harum.",
-    imageUrl: "https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=900&q=80",
-    isBestSeller: false,
-  },
-];
-
 export default function ProductSection() {
   const foodRef = useRef(null);
   const drinkRef = useRef(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [productsByCategory, setProductsByCategory] = useState({
-    makanan: foodProducts,
-    minuman: drinkProducts,
+    makanan: [],
+    minuman: [],
   });
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
 
   useEffect(() => {
     let isCurrent = true;
 
     getProducts({ activeOnly: true })
       .then((result) => {
-        if (!isCurrent || !result.data) return;
+        if (!isCurrent) return;
 
         const products = { makanan: [], minuman: [] };
-        result.data.forEach((product) => {
+        (Array.isArray(result.data) ? result.data : []).forEach((product) => {
           const category = String(product.category || "").toLowerCase();
           if (!products[category]) return;
 
@@ -148,7 +48,14 @@ export default function ProductSection() {
 
         setProductsByCategory(products);
       })
-      .catch(() => { });
+      .catch(() => {
+        if (!isCurrent) return;
+        setProductsByCategory({ makanan: [], minuman: [] });
+        setLoadError("Produk belum dapat dimuat. Silakan coba lagi nanti.");
+      })
+      .finally(() => {
+        if (isCurrent) setIsLoading(false);
+      });
 
     return () => {
       isCurrent = false;
@@ -180,8 +87,21 @@ export default function ProductSection() {
         </p>
       </div>
 
+      {isLoading ? (
+        <p className="py-8 text-center text-on-surface-variant" role="status">
+          Memuat produk...
+        </p>
+      ) : loadError ? (
+        <p className="py-8 text-center text-on-surface-variant" role="alert">
+          {loadError}
+        </p>
+      ) : productGroups.every((group) => group.items.length === 0) ? (
+        <p className="py-8 text-center text-on-surface-variant">
+          Belum ada produk tersedia.
+        </p>
+      ) : (
       <div className="space-y-8">
-        {productGroups.map((group) => {
+        {productGroups.filter((group) => group.items.length > 0).map((group) => {
           const scrollRef = group.id === "makanan" ? foodRef : drinkRef;
 
           return (
@@ -225,6 +145,7 @@ export default function ProductSection() {
           );
         })}
       </div>
+      )}
       <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
     </section>
   );
