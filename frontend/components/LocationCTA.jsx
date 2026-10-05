@@ -46,10 +46,12 @@ export default function LocationCTA() {
           </div>
           <div className="pt-5 md:pt-6 border-t border-outline-variant/30">
             <h3 className="font-headline-md text-headline-md text-on-surface mb-4">Pesan Langsung?</h3>
-            <button className="w-full sm:w-auto justify-center bg-[#25D366] hover:bg-[#20bd5a] text-white font-label-md text-label-md px-6 sm:px-8 py-3.5 sm:py-4 rounded-full flex items-center gap-2 transition-colors shadow-lg shadow-[#25D366]/20 cursor-pointer">
-              <span className="material-symbols-outlined" data-icon="chat">chat</span>
-              Pesan via WhatsApp
-            </button>
+            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">
+              <button className="w-full sm:w-auto justify-center bg-[#25D366] hover:bg-[#20bd5a] text-white font-label-md text-label-md px-6 sm:px-8 py-3.5 sm:py-4 rounded-full flex items-center gap-2 transition-colors shadow-lg shadow-[#25D366]/20 cursor-pointer">
+                <span className="material-symbols-outlined" data-icon="chat">chat</span>
+                Pesan via WhatsApp
+              </button>
+            </a>
           </div>
         </div>
 
