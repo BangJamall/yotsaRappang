@@ -132,7 +132,7 @@ export default function ProductSection() {
                 <div className="min-w-0 max-w-full overflow-hidden md:px-12">
                   <div
                     ref={scrollRef}
-                    className="flex min-w-0 max-w-full touch-pan-x gap-4 overscroll-x-contain overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory sm:gap-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                    className="flex min-w-0 max-w-full gap-4 overscroll-x-contain overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory sm:gap-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                   >
                     {group.items.map((product) => (
                       <ProductCard key={`${group.id}-${product.id}`} {...product} className="product-card"

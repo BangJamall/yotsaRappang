@@ -57,10 +57,18 @@ const jsonRequest = (method: string, body: unknown): RequestInit => ({
   body: JSON.stringify(body),
 });
 
-export function loginAdmin(username: string, password: string) {
+export function loginAdmin(
+  username: string,
+  password: string,
+  turnstileToken: string,
+) {
   return fetchApi<ApiResult<never>>(
     "/auth/login",
-    jsonRequest("POST", { username, password }),
+    jsonRequest("POST", {
+      username,
+      password,
+      "cf-turnstile-response": turnstileToken,
+    }),
   );
 }
 

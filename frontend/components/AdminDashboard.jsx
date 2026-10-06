@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import TurnstileWidget from "@/components/TurnstileWidget";
 import {
     deletePoster,
     deleteProduct,
@@ -49,6 +50,9 @@ export default function AdminDashboard() {
     const [checkingSession, setCheckingSession] = useState(true);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [turnstileToken, setTurnstileToken] = useState("");
+    const [turnstileResetKey, setTurnstileResetKey] = useState(0);
+    const [turnstileError, setTurnstileError] = useState("");
     const [activeTab, setActiveTab] = useState("products");
     const [products, setProducts] = useState([]);
     const [posters, setPosters] = useState([]);
@@ -108,11 +112,16 @@ export default function AdminDashboard() {
 
     async function handleLogin(event) {
         event.preventDefault();
+        if (!turnstileToken) {
+            setError("Selesaikan verifikasi Turnstile terlebih dahulu.");
+            return;
+        }
+
         setSubmitting(true);
         setError("");
 
         try {
-            const result = await loginAdmin(username, password);
+            const result = await loginAdmin(username, password, turnstileToken);
             if (!result.token) throw new Error("Token login tidak ditemukan.");
             localStorage.setItem("admin_token", result.token);
             setUser(result.user || { username });
@@ -120,6 +129,8 @@ export default function AdminDashboard() {
             await refreshData();
         } catch (requestError) {
             setError(requestError.message || "Login gagal.");
+            setTurnstileToken("");
+            setTurnstileResetKey((key) => key + 1);
         } finally {
             setSubmitting(false);
         }
@@ -262,8 +273,14 @@ export default function AdminDashboard() {
                             </button>
                         </div>
                     </label>
+                    <TurnstileWidget
+                        resetKey={turnstileResetKey}
+                        onTokenChange={setTurnstileToken}
+                        onWidgetError={setTurnstileError}
+                    />
+                    {turnstileError && <p role="alert" className="mb-4 text-sm text-error">{turnstileError}</p>}
                     {error && <p role="alert" className="mb-4 rounded-lg bg-error/10 px-3 py-2 text-sm text-error">{error}</p>}
-                    <button disabled={submitting} className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 font-semibold text-white transition hover:bg-primary/90 disabled:cursor-wait disabled:opacity-60">
+                    <button disabled={submitting || !turnstileToken || !process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 font-semibold text-white transition hover:bg-primary/90 disabled:cursor-wait disabled:opacity-60">
                         <Icon name="login" /> {submitting ? "Memproses..." : "Masuk"}
                     </button>
                 </form>
