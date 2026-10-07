@@ -2,7 +2,7 @@ export default function ProductCard({ title, price, description, imageUrl, isBes
   const handleOrderClick = (e) => {
     e.stopPropagation(); // biar gak ikut trigger onClick card (buka modal)
 
-    const phoneNumber = "62895803032243"; // 👈 ganti dengan nomor WA kamu (format 62xxxx, tanpa +/spasi)
+    const phoneNumber = "6287828829596"; // 👈 ganti dengan nomor WA kamu (format 62xxxx, tanpa +/spasi)
     const message = `Halo, saya ingin memesan *${title}* (${price}). Apakah masih tersedia?`;
     const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 

@@ -15,7 +15,7 @@ export default function ProductModal({ product, onClose }) {
   if (!product) return null;
 
   const handleOrderClick = () => {
-    const phoneNumber = "6281234567890"; // 
+    const phoneNumber = "6287828829596"; // 
     const message = `Halo, saya ingin memesan *${product.title}* (${product.price}). Apakah masih tersedia?`;
     const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(waUrl, "_blank");
